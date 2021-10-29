@@ -16,10 +16,10 @@ config(){
 	done
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	hwclock --systohc
-	echo -e "en_US.UTF-8\nzh_CN.UTF-8" > /etc/locale.conf
+	echo -e "en_US.UTF-8\nzh_CN.UTF-8" >> /etc/locale.conf
 	locale-gen
 	echo "LANG=en_US.UTF-8" > /etc/locale.conf
-	echo -e "127.0.0.1\tlocalehost\n::1\tlocalehost\n127.0.1.1\t$TMP.localdomain\t$TMP" >> /etc/hosts
+	echo -e "127.0.0.1\tlocalehost\n::1\tlocalehost\n127.0.1.1\t$TMP.localdomain\t$TMP" > /etc/hosts
 }
 main(){
 	config

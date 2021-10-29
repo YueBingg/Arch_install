@@ -16,7 +16,7 @@ install(){
 	mount /dev/sda1 /mnt/boot
 #	pacstrap /mnt base linux linux-firmware	--force
 #	pacman -Syy
-    genfstab -U -p /mnt >> /mnt/etc/fstab
+    genfstab -U -p /mnt > /mnt/etc/fstab
 	cp config.sh /mnt/root/
 	chmod +x config.sh
 	arch-chroot /mnt /root/config.sh
