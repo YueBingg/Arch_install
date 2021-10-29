@@ -1,1 +1,1 @@
-hello world
+Arch 安装脚本
