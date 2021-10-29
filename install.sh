@@ -12,10 +12,10 @@ partion_format(){
 }
 install_config(){
 	mount /dev/sda2 /mnt
-	mkdir /mnt/boot
+#	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-	#pacstrap /mnt base linux linux-firmware	--force
-	#pacman -Syy
+#	pacstrap /mnt base linux linux-firmware	--force
+#	pacman -Syy
     genfstab -U -p /mnt >> /mnt/etc/fstab
 	arch-chroot /mnt
 	echo "Input hostname"
@@ -43,3 +43,4 @@ install_config(){
 main(){
 	install_config
 }
+main
