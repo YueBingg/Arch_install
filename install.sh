@@ -3,7 +3,7 @@ partion_format(){
 	fdisk -l
 	echo "Partition input the disk (/dev/sdx"
 	read TMP
-	echo -e "g\nn\n\n\n+500M\nn\n\n\n\n\nt\n1\n1\nw\n" fdisk $TMP 1>/dev/null 2>&1
+	echo -e "g\nn\n\n\n+500M\nn\n\n\n\n\nt\n1\n1\nw\n" | fdisk $TMP 1>/dev/null 2>&1
 	sleep 1
 	echo "Partition done"
 	mkfs.fat -F32 ${TMP}1 1>/dev/null 1>&2
@@ -14,12 +14,12 @@ install(){
 	mount /dev/sda2 /mnt
 	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-	pacstrap /mnt base linux linux-firmware	--force
 	pacman -Syy
+	pacstrap /mnt base linux linux-firmware	efibootmgr
 	genfstab -U /mnt > /mnt/etc/fstab
 	cp config.sh /mnt/root/
-	chmod +x config.sh
-	arch-chroot /mnt /root/config.sh
+	chmod +x /mnt/root/config.sh
+	arch-chroot /mnt /root/config.sh ${TMP}
 }
 main(){
 	install
