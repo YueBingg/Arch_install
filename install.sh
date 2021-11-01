@@ -12,16 +12,16 @@ partion_format(){
 }
 install(){
 	mount /dev/sda2 /mnt
-#	mkdir /mnt/boot
+	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-#	pacstrap /mnt base linux linux-firmware	--force
-#	pacman -Syy
-    genfstab -U -p /mnt > /mnt/etc/fstab
+	pacstrap /mnt base linux linux-firmware	--force
+	pacman -Syy
+	genfstab -U /mnt > /mnt/etc/fstab
 	cp config.sh /mnt/root/
 	chmod +x config.sh
 	arch-chroot /mnt /root/config.sh
 }
 main(){
-	install_config
+	install
 }
 main

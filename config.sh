@@ -8,7 +8,7 @@ config(){
 		read pwd1
 		echo "Input root password again"
 		read pwd2
-		if [ $pwd1 != $pw2 ];then
+		if [ $pwd1 != $pwd2 ];then
 			echo "Two input password must must be consistent"
 		else
 			break
