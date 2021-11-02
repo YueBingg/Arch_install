@@ -14,8 +14,7 @@ install(){
 	mount /dev/sda2 /mnt
 	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-	pacman -Syy
-	pacstrap /mnt base linux linux-firmware	efibootmgr
+	pacstrap /mnt base linux linux-firmware	efibootmgr dhcpcd
 	genfstab -U /mnt > /mnt/etc/fstab
 	cp config.sh /mnt/root/
 	chmod +x /mnt/root/config.sh
